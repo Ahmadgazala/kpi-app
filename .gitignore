@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# macOS builds
+*.app/
+*.zip
+
+# Local executables
+KPI-2026
+KPI-2026-local
+KPI-2026-Production.zip
+KPI-2026-macOS.zip
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Local data
+*.db
+*.sqlite

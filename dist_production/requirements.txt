@@ -1,0 +1,9 @@
+customtkinter
+matplotlib
+openpyxl
+reportlab
+arabic-reshaper
+python-bidi
+pillow
+fpdf2
+uharfbuzz
