@@ -1,10 +1,13 @@
-name: Build Windows EXE
+name: Build Windows Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -32,9 +35,15 @@ jobs:
             --add-data "KPI-Final 2026.xlsx;." `
             local_app.py
 
-      - name: Upload Windows EXE
-        uses: actions/upload-artifact@v4
+      - name: Create ZIP
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path "dist/KPI-2026.exe" `
+            -DestinationPath "KPI-2026-Windows.zip"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: KPI-2026-Windows
-          path: dist/KPI-2026.exe
-    
+          files: KPI-2026-Windows.zip
+          generate_release_notes: true
